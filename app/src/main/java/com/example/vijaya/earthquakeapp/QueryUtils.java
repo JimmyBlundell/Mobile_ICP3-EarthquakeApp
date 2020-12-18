@@ -38,7 +38,7 @@ public class QueryUtils {
         //  URL object to store the url for a given string
         URL url = null;
         // A string to store the response obtained from rest call in the form of string
-        String jsonResponse = "";
+        String jason = "";
         StringBuilder result = new StringBuilder();
 
         // two try blocks: one for json parsing errors, and the other that catches exceptions when adding the data to the earthquakes list
@@ -47,14 +47,15 @@ public class QueryUtils {
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                result.append(line);
+            String str;
+            while ((str = reader.readLine()) != null) {
+                result.append(str);
             }
-            jsonResponse = result.toString();
+
+            jason = result.toString();
 
             try {
-                JSONObject json1 = new JSONObject(jsonResponse);
+                JSONObject json1 = new JSONObject(jason);
                 JSONArray data = json1.getJSONArray("features");
                 JSONObject json2 = new JSONObject(data.getString(0));
                 JSONObject json3;
