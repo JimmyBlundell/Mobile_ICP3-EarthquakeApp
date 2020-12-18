@@ -40,6 +40,8 @@ public class QueryUtils {
         // A string to store the response obtained from rest call in the form of string
         String jsonResponse = "";
         StringBuilder result = new StringBuilder();
+
+        // two try blocks: one for json parsing errors, and the other that catches exceptions when adding the data to the earthquakes list
         try {
             url = new URL(requestUrl);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
